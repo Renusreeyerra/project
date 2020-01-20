@@ -6,7 +6,7 @@ const {SubMenu }= Menu;
 
 function Side() {
   return (
-    <Sider style={{ overflow: 'auto', height: '110hv',margin: "65px 0px 0px 0px",position: 'fixed',left: 0,}}>
+    <Sider style={{ overflow: 'auto', height: '160hv',margin: "65px 0px 0px 0px",position: 'fixed',left: 0,}}>
        <Menu theme="light" mode="inline" defaultSelectedKeys={["4"]} style={{ height: "600px"}}>
           <SubMenu key="sub1" title={ <span> <Icon type="user" /> subnav 1 </span> } >
              <Menu.Item key="1">option1</Menu.Item>
@@ -24,7 +24,7 @@ function Side() {
              <Menu.Item key="9">option9</Menu.Item>
              <Menu.Item key="10">option10</Menu.Item>
              <Menu.Item key="11">option11</Menu.Item>
-             <Menu.Item key="12">option12</Menu.Item>
+            
           </SubMenu>
         </Menu>
       </Sider>
