@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { withRouter} from 'react-router-dom'
+import './Login.css'
 
 class Login extends Component {
-  constructor() {
+ constructor() {
     super();
     this.state = {
-      fields: {},
+      fields: {
+        username: "",
+        password: ""
+      },
       errors: {}
     }
 
@@ -20,21 +24,37 @@ class Login extends Component {
     this.setState({
       fields
     });
-
+    console.log(this.state.fields);
   }
-
+ //submitting Form
   submit(e) {
     e.preventDefault();
-    if (this.validateForm()) {
-        let fields = {};
-        fields["username"] = "";
-        fields["password"] = "";
-        this.setState({fields:fields});
-        this.props.history.push('/dashboard');
+    const { username, password } = this.state.fields;
+    if(this.validateForm()){
+      this.setState({ error: false });
+       if ((username === 'User' && password === 'user123')) {
+            console.log(" User logged In")
+            return this.props.history.push('/dashboard/User')
+        }
+          
+    
+        if ((username === 'Admin' && password === 'adm123')) {
+             console.log(" Admin logged In")
+            return this.props.history.push('/dashbord/Admin')
+          }
+            
+    
+        if ((username === 'Developer' && password === 'dev123')) {
+             console.log(" Developer logged In")
+             return this.props.history.push('/dashboard/Developer')
+      }
+      this.props.history.push('/404')
     }
-
   }
+   
+  
 
+    //   Form Validation
   validateForm() {
 
     let fields = this.state.fields;
@@ -52,16 +72,13 @@ class Login extends Component {
         errors["username"] = "*Please enter alphabet characters only.";
       }
     }
-
-   
-
-    if (!fields["password"]) {
+     
+   if (!fields["password"]) {
       formIsValid = false;
       errors["password"] = "*Please enter your password.";
     }
 
-
-    this.setState({
+  this.setState({
       errors: errors
     });
     return formIsValid;
@@ -72,10 +89,14 @@ class Login extends Component {
 render() {
   return (
   <div className="wrapper">
-  <div className="form-wrapper">
-      <h1>Login</h1>
-      <form method="post"  name="login"  onSubmit= {this.submit} >
-      <div className="firstName">
+    
+   <div className="form-wrapper">
+   
+      <h1>LOGIN</h1>
+      <form
+       method="post" 
+       name="login"  onSubmit= {this.submit} >
+      <div className="Username">
       <label>UserName</label>
       <input type="text" 
       name="username"
@@ -88,149 +109,22 @@ render() {
       <div className="password">
       <label>Password</label>
       <input type="password" 
-      name="password"
+     name="password"
       placeholder="Password"
        value={this.state.fields.password}
         onChange={this.handleChange} />
       <div className="errorMsg">
         {this.state.errors.password}</div>
       </div>
-      <div className="login">
-      <input type="submit" 
-      className="button" 
-       value="Login"/>
+      <div className="Login">
+      <button type="submit">Login</button> 
+      <small>Forgot Password?</small>
       </div>
       </form>
   </div>
 </div>
-
-    );
+);
 }
-
-
 }
-
 
 export default withRouter(Login);
-
- 
-//  const formValid = formErrors => {
-//  let valid = false;
-
-//  Object.values(formErrors).forEach(val => {
-// val.length > 0 && (valid = false);
-// });
-
-//   return valid;
-//  };
-
-//  class Login extends Component {
-//     constructor(props) {
-//         super(props);
-//  this.state = {
-//           userName: null,
-//           password: null,
-//           formErrors: {
-//             userName: "",
-//             password: ""
-//           }
-//         }
-//       }
-    
-//       handleSubmit = e => {
-//       e.preventDefault();
-   
-//        if (formValid(this.state.formErrors)) {
-//         this.props.history.push('/dashboard');
-//         console.log(`
-//         --SUBMITTING--
-//         User Name: ${this.state.firstName}
-//         Password: ${this.state.password}
-//         `)
-//          } else {
-//           alert('Invalid');
-//         }
-//        }
-//       handleChange = e => {
-//         e.preventDefault();
-//         const { name, value } = e.target;
-//         let formErrors = this.state.formErrors;
-//       // this.setState ({
-//       //   [name] : value )}
-//       console.log("Name:", name)
-//       console.log("value:", value)
-
-//         switch (value) {
-//           case 'userName':
-//             formErrors.userName =
-//               value.length < 3
-//                 ? "minimum 3 characters required"
-//                 : "";
-//             break;
-      
-//           case 'password':
-//             formErrors.password =
-//               value.length < 6 
-//                 ? "minimum 6 characters required"
-//                 : "";
-//             break;
-//           default:
-//             break;
-//         }
-//         this.setState({ formErrors, [name]: value }, () =>
-//          console.log(this.state));
-//       }
-//   render() {
-//     const { formErrors } = this.state
-//     return (
-//         <div className="wrapper">
-//         <div className="form-wrapper">
-//           <h1>Login</h1>
-//           <form onSubmit={this.handleSubmit} noValidate>
-//             <div className="userName">
-//               <label htmlFor="userName">User Name</label>
-//               <input 
-//               type="text"
-//               value={this.state.userName}
-//               className={formErrors.userName.length > 0 ? "error" : null}
-//                 placeholder="userName"
-//                 name="userName"
-               
-//                 onChange={this.handleChange}
-//               />
-//               {formErrors.userName.length > 0 && (
-//                 <span className="errorMessage">{formErrors.userName}</span>
-//               )}
-//             </div>
-//             <div className="password">
-//             <label htmlFor="password">Password</label>
-//             <input
-           
-//             value={this.state.password}
-//               className={formErrors.password.length > 0 ? "error" : null}
-//               placeholder="password"
-//               type="password"
-//               name="password"
-           
-//               onChange={this.handleChange} />
-//                {formErrors.password.length > 0 && (
-//               <span className="errorMessage">{formErrors.password}</span>
-//             )}
-//           </div>
-//             <div className="Login">
-          
-            
-//             <button
-//             type="submit">Login </button> 
-//             <br/> 
-//             <small>Forgot Password?</small> 
-           
-//         </div>
-//         </form>
-//         </div>
-//         </div>
-//     );
-//   }
-// }
-
-// export default withRouter(Login);

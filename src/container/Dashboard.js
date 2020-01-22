@@ -1,22 +1,16 @@
-import React from 'react'
-import 'antd/dist/antd.css'
-import { Layout } from 'antd'
-import Head from '../components/Head'
-import Side from '../components/Side'
-import Main from '../components/Main'
-import Foot from '../components/Foot'
+import React from 'react';
+import Admin from '../components/Dashboard/Admin';
+import Developer from '../components/Dashboard/developer';
+import User from '../components/Dashboard/User';
 
 
 function Dashboard() {
   return (
-  <Layout>
-    <Head />
-    <Side />
-   <Layout style={{ marginLeft: 200 }}> 
-      <Main  />
-      <Foot />
-    </Layout> 
-</Layout>
+    <div>
+      <Admin />
+      <Developer />
+      <User />
+    </div>
   );
 }
 
