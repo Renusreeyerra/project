@@ -15,6 +15,7 @@ function Router() {
 <Route exact path="/dashbord/Admin" component={Admin} />
 <Route exact path="/dashboard/Developer" component={Developer} />
 <Route exact path="/404" component={PageNotFound} />
+<Route exact path="/login" component={Login} />
 
 </Switch> 
   ); 
