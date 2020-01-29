@@ -1,13 +1,9 @@
 import React from 'react'
 import './App.css'
-import Router from './container/Router'
+import Main from './container/Main'
 
 function App() {
-  return (
-    <div>
-      <Router />
-</div>
-  ); 
+  return (  <Main />); 
 }
 
 export default App;

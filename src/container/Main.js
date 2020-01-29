@@ -7,7 +7,8 @@ import Developer from '../components/Dashboard/developer'
 import PageNotFound from '../components/PageNotFound'
 
 
-function Router() {
+
+function Main() {
   return (
 <Switch>
 <Route exact path="/" component={Login} />
@@ -21,4 +22,4 @@ function Router() {
   ); 
 }
 
-export default withRouter(Router);
+export default withRouter(Main);

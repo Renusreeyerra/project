@@ -88,6 +88,7 @@ class Login extends Component {
 
 render() {
   return (
+    <React.Fragment>
   <div className="wrapper">
     
    <div className="form-wrapper">
@@ -123,6 +124,7 @@ render() {
       </form>
   </div>
 </div>
+</React.Fragment>
 );
 }
 }

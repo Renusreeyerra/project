@@ -8,8 +8,7 @@ import Mainadm from '../Layout/Main/Mainadm'
 
 
 function Admin(props) {
- 
-  return (
+ return (
   <Layout>
     <Head />
     <Side />

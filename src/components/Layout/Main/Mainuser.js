@@ -6,11 +6,13 @@ import {Layout} from 'antd'
 const { Content } = Layout;
 function Mainemp() {
   return (
-    <Content style={{ margin: "95px 20px 0 " }}>
+    <Content style={{ margin: "86px 5px 0 " }}>
           <div style={{ background: "white", minHeight: 500 }}> 
-           <div className="container">  <p>UserName : User</p> 
-              <p>Password : user123</p> </div> 
-           </div> 
+           < div style={{textAlign:"center"}}> 
+             <h1>UserName : User</h1> 
+              <h1>Password : user123</h1>
+            </div>
+          </div> 
         </Content>
 
   );
